@@ -1,7 +1,8 @@
 include:
+  - collectors/compose.yml
   - prometheus/compose.yml
-  - exporters/compose.yml
   - grafana/compose.yml
+  - loki/compose.yml
 
 networks:
   monitoring:
@@ -10,3 +11,4 @@ networks:
 volumes:
   prometheus_data:
   grafana_data:
+  loki_data: {}

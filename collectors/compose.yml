@@ -26,6 +26,7 @@ services:
     - DAC_READ_SEARCH
     volumes:
       - ./promtail-config.yml:/etc/promtail/config.yml:ro,Z
+      # - ./collectors/promtail-config.yml:/etc/promtail/config.yml:ro,Z # for podman-compose
       #  === SELinux will HATE this ===
       # - /run/log/journal:/run/log/journal:ro
       - /var/log/journal:/var/log/journal:ro

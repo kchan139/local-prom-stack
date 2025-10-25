@@ -4,6 +4,7 @@ services:
     container_name: loki
     volumes:
       - ./config.yml:/etc/loki/local-config.yaml:ro
+      # - ./loki/config.yml:/etc/loki/local-config.yaml:ro # for podman-compose
       - loki_data:/loki
     ports:
       - "127.0.0.1:3100:3100"

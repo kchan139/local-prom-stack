@@ -25,7 +25,7 @@ services:
     - SYS_ADMIN
     - DAC_READ_SEARCH
     volumes:
-      - ./collectors/promtail-config.yml:/etc/promtail/config.yml:ro,Z
+      - ./promtail-config.yml:/etc/promtail/config.yml:ro,Z
       #  === SELinux will HATE this ===
       # - /run/log/journal:/run/log/journal:ro
       - /var/log/journal:/var/log/journal:ro

@@ -16,7 +16,7 @@ Start the stack:
 ```bash
 docker compose up -d
 ```
-> Access Grafana at `http://localhost:3000` (admin/admin)
+> Access Grafana at [http://localhost:3000](http://localhost:3000) (admin/admin)
 
 ## Viewing Logs
 

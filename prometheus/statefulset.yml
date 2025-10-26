@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: prometheus
   namespace: monitoring
 spec:
+  serviceName: prometheus
   replicas: 1
   selector:
     matchLabels:
@@ -32,6 +33,11 @@ spec:
       - name: config
         configMap:
           name: prometheus-config
-      - name: data
-        persistentVolumeClaim:
-          claimName: prometheus-data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi

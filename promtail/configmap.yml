@@ -23,5 +23,13 @@ data:
           labels:
             job: systemd-journal
         relabel_configs:
-          - source_labels: ['_SYSTEMD_UNIT']
+          - source_labels: ['__journal__systemd_unit']
             target_label: 'unit'
+          - source_labels: ['__journal__hostname']
+            target_label: 'hostname'
+          - source_labels: ['__journal_priority']
+            target_label: 'priority'
+          - source_labels: ['__journal__systemd_unit']
+            regex: 'sshd.service'
+            target_label: 'job'
+            replacement: 'ssh'

@@ -24,3 +24,14 @@ data:
       - job_name: "promtail"
         static_configs:
           - targets: ["promtail:9080"]
+
+      - job_name: "crowdsec"
+        kubernetes_sd_configs:
+          - role: node
+        relabel_configs:
+          - source_labels: [__address__]
+            regex: '([^:]+)(?::\d+)?'
+            target_label: __address__
+            replacement: '${1}:6060'
+          - source_labels: [__meta_kubernetes_node_name]
+            target_label: node
